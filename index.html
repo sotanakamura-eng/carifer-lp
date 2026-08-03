@@ -12,187 +12,22 @@
   <meta name="twitter:card" content="summary_large_image">
   <style>
 
-:root {
-  --orange: #ff5a21;
-  --orange-dark: #ed4914;
-  --cream: #f7f2e8;
-  --ink: #142a43;
-  --paper: #fffdf8;
-  --line: rgba(20, 42, 67, .18);
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; }
-a { color: inherit; text-decoration: none; }
-
-.site-header {
-  height: 92px; display: flex; align-items: center; gap: 52px; padding: 0 5vw;
-  background: var(--cream); border-bottom: 1px solid var(--line); position: relative; z-index: 10;
-}
-.brand, .footer-brand { display: flex; align-items: center; gap: 10px; font-size: 11px; line-height: 1.1; letter-spacing: .08em; }
-.brand-mark {
-  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50% 50% 46% 54%;
-  background: var(--orange); color: white; font: 900 26px/1 Arial; transform: rotate(-5deg);
-}
-.brand-mark + span { font-weight: 700; }
-.brand b, .footer-brand b { font-size: 15px; letter-spacing: .14em; }
-nav { margin-left: auto; display: flex; gap: 34px; font-size: 13px; font-weight: 700; }
-nav a { position: relative; }
-nav a::after { content: ""; height: 2px; width: 0; background: var(--orange); position: absolute; left: 0; bottom: -7px; transition: width .25s; }
-nav a:hover::after { width: 100%; }
-.header-cta { background: var(--ink); color: white; padding: 15px 20px; font-size: 13px; font-weight: 800; border-radius: 2px; }
-.header-cta span { margin-left: 16px; }
-
-.hero {
-  min-height: calc(100vh - 92px); max-height: 850px; position: relative; overflow: hidden;
-  display: grid; grid-template-columns: 56% 44%; border-bottom: 1px solid var(--ink);
-}
-.hero-copy { padding: 9vh 3vw 70px 7vw; position: relative; z-index: 2; }
-.eyebrow { display: flex; align-items: center; gap: 14px; font-size: 14px; font-weight: 800; letter-spacing: .08em; }
-.eyebrow span { color: white; background: var(--orange); padding: 7px 11px; transform: rotate(-1deg); }
-h1 { font-size: clamp(47px, 5.25vw, 82px); letter-spacing: -.07em; line-height: 1.18; margin: 4.5vh 0 28px; font-weight: 900; }
-h1 span { display: block; width: max-content; background: linear-gradient(transparent 73%, #ffc82e 0); }
-.hero-lead { font-size: clamp(15px, 1.35vw, 19px); font-weight: 700; line-height: 2; letter-spacing: .05em; }
-.main-cta, .contact-button {
-  margin-top: 28px; width: min(460px, 100%); min-height: 88px; color: white; background: var(--orange);
-  display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; align-items: center;
-  padding: 17px 24px 17px 28px; font-weight: 900; font-size: 18px; box-shadow: 8px 8px 0 var(--ink);
-  transition: transform .2s, box-shadow .2s;
-}
-.main-cta:hover, .contact-button:hover { transform: translate(4px,4px); box-shadow: 4px 4px 0 var(--ink); }
-.main-cta small, .contact-button small { grid-column: 1/-1; font-size: 11px; letter-spacing: .08em; }
-.main-cta > span, .contact-button > span { font-size: 25px; }
-.hero-art { position: relative; background: var(--orange); overflow: hidden; }
-.hero-art::before { content:""; position:absolute; inset: 6% 7%; border: 2px solid rgba(255,255,255,.7); border-radius: 51% 49% 45% 55%; transform: rotate(7deg); }
-.orange-disc { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: #ffca29; right: -90px; bottom: -120px; opacity: .95; }
-.portrait { position: absolute; z-index: 2; width: 290px; height: 480px; bottom: 0; left: 50%; transform: translateX(-50%); }
-.face { position:absolute; width: 170px; height: 205px; background: #f4bb91; border-radius: 50% 48% 45% 48%; top: 50px; left: 60px; z-index:2; }
-.hair { position:absolute; width: 205px; height: 140px; background: var(--ink); border-radius: 55% 50% 30% 25%; top: 18px; left: 40px; z-index:3; transform: rotate(-4deg); }
-.hair::after { content:""; position:absolute; right:-5px; bottom:-83px; width:44px; height:122px; background:var(--ink); border-radius:0 0 30px 30px; transform:rotate(-8deg); }
-.eye { position:absolute; width:8px; height:10px; border-radius:50%; background:var(--ink); top:100px; }
-.eye.left { left:46px; } .eye.right { right:43px; }
-.smile { position:absolute; width:43px; height:18px; border-bottom:4px solid var(--ink); border-radius:50%; left:66px; top:137px; transform:rotate(3deg); }
-.body { position:absolute; width:290px; height:260px; bottom:-25px; background:var(--paper); border-radius:48% 48% 0 0; border:4px solid var(--ink); }
-.shirt-line { position:absolute; left:50%; top:0; width:3px; height:100%; background:var(--ink); transform:rotate(-4deg); }
-.speech { position:absolute; z-index:4; background:var(--paper); padding:14px 18px; border:2px solid var(--ink); font-weight:800; font-size:14px; line-height:1.55; box-shadow:5px 5px 0 var(--ink); }
-.speech-a { left:6%; top:18%; transform:rotate(-5deg); } .speech-b { right:5%; top:49%; transform:rotate(4deg); }
-.speech b { color:var(--orange); }
-.spark { color:#fff; position:absolute; z-index:4; font-size:42px; }
-.spark-a { right:12%; top:10%; } .spark-b { left:9%; top:62%; font-size:26px; }
-.scroll-note { position:absolute; right:calc(44% + 20px); bottom:25px; writing-mode:vertical-rl; font-size:10px; letter-spacing:.25em; font-weight:900; z-index:5; }
-.scroll-note span { color:var(--orange); margin-top:10px; font-size:18px; }
-
-.marquee { overflow:hidden; background:var(--ink); color:white; padding:14px 0; font:900 17px/1 Arial; letter-spacing:.16em; white-space:nowrap; }
-.marquee div { width:max-content; animation:slide 18s linear infinite; }
-@keyframes slide { to { transform:translateX(-35%); } }
-.section-pad { padding: 120px 7vw; }
-.section-label { display:flex; gap:14px; align-items:center; font:800 11px/1 Arial; letter-spacing:.16em; }
-.section-label b { display:grid; place-items:center; width:42px; height:42px; border:1px solid var(--ink); border-radius:50%; font-size:12px; }
-.section-label.light { color:white; } .section-label.light b { border-color:white; }
-
-.intro { display:grid; grid-template-columns:180px 1fr .9fr; gap:4vw; background:var(--paper); }
-.intro-main .kicker, .support-heading p, .flow-head p { color:var(--orange); font-weight:900; font-size:15px; line-height:1.7; }
-.intro h2, .support h2, .flow h2, .faq h2 { font-size:clamp(38px,4.2vw,62px); margin:12px 0 0; line-height:1.35; letter-spacing:-.05em; }
-.intro-copy { padding-top:45px; font-size:15px; line-height:2; font-weight:600; }
-.mini-stats { display:flex; gap:25px; border-top:1px solid var(--line); margin-top:38px; padding-top:24px; }
-.mini-stats div { display:flex; flex-direction:column; }
-.mini-stats strong { font:900 40px/1 Arial; color:var(--orange); }
-.mini-stats strong small { font-size:15px; }
-.mini-stats span { margin-top:7px; font-size:11px; font-weight:800; }
-
-.support { background:var(--orange); color:white; position:relative; overflow:hidden; }
-.support::after { content:"SUPPORT"; position:absolute; right:-20px; top:70px; font:900 11vw/1 Arial; color:rgba(255,255,255,.08); }
-.support-heading { display:flex; justify-content:space-between; align-items:end; margin:42px 0 65px 180px; position:relative; z-index:1; }
-.support-heading p { color:#ffda3b; }
-.support-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; position:relative; z-index:1; }
-.support-grid article { background:var(--paper); color:var(--ink); min-height:430px; padding:26px 22px 32px; position:relative; border-radius:2px; }
-.card-num { font:900 13px Arial; padding-bottom:18px; border-bottom:1px solid var(--line); }
-.card-icon { width:145px; height:130px; margin:25px auto; display:grid; place-items:center; color:var(--orange); font:900 80px/1 Arial; }
-.chat-icon { position:relative; }
-.chat-icon span { position:absolute; width:92px; height:61px; border:4px solid var(--ink); border-radius:50%; background:#ffcf2d; transform:rotate(-8deg); }
-.chat-icon span:last-child { width:72px; height:49px; right:0; bottom:14px; background:var(--orange); transform:rotate(7deg); }
-.support-grid h3 { font-size:21px; margin:0 0 14px; }
-.support-grid p { font-size:14px; line-height:1.9; font-weight:600; }
-
-.fit { background:#ffcc27; display:flex; align-items:center; justify-content:space-between; gap:8vw; }
-.fit-title span { display:inline-block; background:var(--ink); color:white; padding:7px 11px; font-size:12px; font-weight:800; transform:rotate(-2deg); }
-.fit-title h2 { font:900 clamp(40px,6vw,80px)/.9 Arial; max-width:520px; letter-spacing:-.06em; margin:20px 0; }
-.fit ul { list-style:none; margin:0; padding:0; min-width:min(520px,48vw); }
-.fit li { background:var(--paper); margin:10px 0; padding:17px 20px; border:2px solid var(--ink); font-weight:900; box-shadow:4px 4px 0 var(--ink); }
-.fit li span { color:var(--orange); margin-right:14px; }
-
-.flow { background:var(--cream); }
-.flow-head { text-align:center; margin:10px 0 65px; }
-.flow-head h2 { margin-top:0; }
-.steps { list-style:none; display:grid; grid-template-columns:repeat(5,1fr); margin:0; padding:0; border:1px solid var(--ink); background:var(--paper); }
-.steps li { min-height:280px; padding:22px; text-align:center; border-right:1px solid var(--ink); position:relative; }
-.steps li:last-child { border:0; }
-.steps li > b { position:absolute; top:18px; left:18px; font:900 13px Arial; color:var(--orange); }
-.step-icon { display:block; font-size:62px; margin:42px 0 25px; color:var(--orange); }
-.steps h3 { margin:0; font-size:20px; }
-.steps p { font-size:12px; font-weight:700; opacity:.65; }
-
-.faq { background:var(--paper); display:grid; grid-template-columns:180px 1fr; gap:4vw; }
-.faq h2 { margin:0 0 35px; }
-.faq-list { grid-column:2; }
-details { border-top:1px solid var(--ink); }
-details:last-child { border-bottom:1px solid var(--ink); }
-summary { list-style:none; display:flex; align-items:center; gap:20px; min-height:90px; cursor:pointer; font-weight:900; }
-summary::-webkit-details-marker { display:none; }
-summary span { color:var(--orange); font:900 22px Arial; }
-summary i { margin-left:auto; font-style:normal; font-size:25px; transition:transform .2s; }
-details[open] summary i { transform:rotate(45deg); }
-details p { margin:0; padding:0 40px 30px 50px; font-size:14px; line-height:1.9; }
-
-.contact { text-align:center; background:var(--ink); color:white; position:relative; }
-.contact > p:first-of-type { color:#ffcd28; font:900 13px Arial; letter-spacing:.25em; }
-.contact h2 { font-size:clamp(42px,5.3vw,72px); line-height:1.25; letter-spacing:-.05em; margin:18px 0 32px; }
-.contact-button { margin:0 auto; text-align:left; box-shadow:8px 8px 0 #ffcd28; }
-.contact-button:hover { box-shadow:4px 4px 0 #ffcd28; }
-.contact-badge { position:absolute; left:10%; top:95px; background:#ffcd28; color:var(--ink); border-radius:50%; width:125px; height:125px; display:grid; place-content:center; font-size:12px; transform:rotate(-9deg); }
-.contact-badge b { font-size:18px; }
-.privacy-note { font-size:11px; opacity:.6; margin-top:30px; }
-footer { padding:65px 7vw 25px; background:var(--orange); color:white; display:grid; grid-template-columns:1fr 2fr; gap:40px; }
-.footer-brand .brand-mark { background:white; color:var(--orange); }
-.footer-links { display:flex; flex-wrap:wrap; justify-content:flex-end; align-items:center; gap:14px 28px; font-size:12px; font-weight:800; }
-footer > small { grid-column:1/-1; border-top:1px solid rgba(255,255,255,.4); padding-top:20px; text-align:right; font:700 10px Arial; letter-spacing:.15em; }
-
-@media (max-width: 900px) {
-  .site-header { height:74px; padding:0 5vw; } .site-header nav, .header-cta { display:none; }
-  .hero { min-height:auto; max-height:none; grid-template-columns:1fr; }
-  .hero-copy { padding:65px 7vw 55px; }
-  .hero-art { min-height:520px; }
-  h1 { font-size:clamp(39px,10.5vw,66px); }
-  .scroll-note { display:none; }
-  .section-pad { padding:82px 6vw; }
-  .intro { grid-template-columns:1fr; } .intro-copy { padding:0; } .mini-stats { justify-content:space-between; }
-  .support-heading { margin:42px 0; display:block; }
-  .support-grid { grid-template-columns:1fr; } .support-grid article { min-height:390px; }
-  .fit { display:block; } .fit ul { min-width:0; }
-  .steps { grid-template-columns:1fr; } .steps li { border-right:0; border-bottom:1px solid var(--ink); } .steps li:last-child { border-bottom:0; }
-  .faq { grid-template-columns:1fr; } .faq-list { grid-column:1; }
-  .contact-badge { display:none; }
-}
-
-@media (max-width: 520px) {
-  .hero-copy { padding-top:50px; }
-  .eyebrow { align-items:flex-start; flex-direction:column; gap:9px; }
-  h1 span { width:auto; }
-  .hero-art { min-height:440px; }
-  .portrait { transform:translateX(-50%) scale(.85); transform-origin:bottom; }
-  .speech { font-size:11px; padding:10px; }
-  .mini-stats { gap:10px; } .mini-stats strong { font-size:32px; }
-  .fit-title h2 { font-size:48px; }
-  .steps { grid-template-columns:1fr; } .steps li { border-right:0; border-bottom:1px solid var(--ink)!important; } .steps li:last-child { border-bottom:0!important; }
-  .faq h2, .intro h2, .support h2, .flow h2 { font-size:36px; }
-  footer { grid-template-columns:1fr; } .footer-links { justify-content:flex-start; } footer > small { grid-column:1; text-align:left; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior:auto; } .marquee div { animation:none; }
-}
+:root{--navy:#081540;--blue:#17357e;--ice:#eef2f7;--white:#fff;--ink:#0b1433;--line:#ccd3df;--lime:#d8ff45}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:Arial,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}a{color:inherit;text-decoration:none}
+.site-header{height:80px;display:flex;align-items:center;padding:0 5vw;border-bottom:1px solid #e5e8ee;background:#fff;position:relative;z-index:10}.brand,.footer-brand{display:flex;align-items:center;gap:13px;font-size:9px;line-height:1.35;letter-spacing:.14em}.brand b,.footer-brand b{font-size:21px;letter-spacing:-.02em}.brand-mark{display:grid;place-items:center;width:42px;height:42px;background:var(--navy);color:#fff;font:800 23px/1 Arial;clip-path:polygon(0 0,100% 0,80% 100%,0 82%)}nav{margin-left:auto;display:flex;align-items:center;gap:36px;font-size:11px;font-weight:800;letter-spacing:.08em}.header-cta{height:80px;margin-left:42px;padding:0 30px;display:flex;align-items:center;gap:22px;background:var(--navy);color:#fff;font-size:12px;font-weight:800}.header-cta span{font-size:20px}
+.hero{min-height:calc(100vh - 80px);display:grid;grid-template-columns:50% 50%;position:relative;overflow:hidden;background:#fff}.hero-art{order:1;position:relative;background:linear-gradient(145deg,#071435,#173b79);overflow:hidden}.hero-art:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 0 46%,rgba(255,255,255,.08) 46% 47%,transparent 47% 60%,rgba(255,255,255,.05) 60% 61%,transparent 61%)}.hero-art:after{content:"";position:absolute;width:430px;height:430px;border:1px solid rgba(255,255,255,.35);border-radius:50%;left:-95px;bottom:-120px}.hero-copy{order:2;padding:11vh 6vw 80px 9vw;display:flex;flex-direction:column;justify-content:center}.eyebrow{font-size:14px;font-weight:800;line-height:1.6;margin:0 0 7vh;max-width:380px}.eyebrow:before{content:"";display:inline-block;width:36px;height:2px;background:var(--navy);vertical-align:middle;margin-right:14px}h1{font-size:clamp(62px,7vw,108px);font-weight:500;line-height:.95;letter-spacing:-.075em;margin:0;color:var(--navy)}h1 span{display:block}.hero-lead{font-size:15px;line-height:2;margin:5vh 0 0}.hero-lead b{font-size:20px}.main-cta,.contact-button{margin-top:30px;width:min(390px,100%);height:74px;padding:0 24px;display:grid;grid-template-columns:1fr auto;align-items:center;background:var(--navy);color:#fff;font-size:15px;font-weight:800;transition:.25s}.main-cta small,.contact-button small{display:block;font-size:9px;letter-spacing:.08em}.main-cta>span,.contact-button>span{font-size:22px}.main-cta:hover,.contact-button:hover{background:var(--blue);transform:translateX(5px)}
+.portrait{position:absolute;width:320px;height:520px;left:50%;bottom:0;transform:translateX(-50%);filter:grayscale(1);opacity:.95}.face{position:absolute;width:175px;height:210px;background:#d8dce5;border-radius:50% 46% 47% 50%;top:55px;left:72px;z-index:2}.hair{position:absolute;width:210px;height:145px;background:#020817;border-radius:58% 48% 30% 25%;top:20px;left:52px;z-index:3}.hair:after{content:"";position:absolute;right:-4px;bottom:-88px;width:44px;height:125px;background:#020817;border-radius:0 0 30px 30px;transform:rotate(-8deg)}.eye{position:absolute;width:7px;height:9px;border-radius:50%;background:#11182a;top:102px}.eye.left{left:48px}.eye.right{right:44px}.smile{position:absolute;width:40px;height:17px;border-bottom:3px solid #11182a;border-radius:50%;left:68px;top:138px}.body{position:absolute;width:320px;height:290px;bottom:-30px;background:#f6f7fa;border-radius:48% 48% 0 0;border:2px solid #020817}.shirt-line{position:absolute;left:50%;top:0;width:2px;height:100%;background:#020817}.speech{position:absolute;z-index:4;color:#fff;font:700 12px/1.45 Arial;letter-spacing:.12em}.speech-a{left:6%;top:13%;font-size:18px}.speech-b{right:5%;bottom:10%;text-align:right}.speech b{color:var(--lime)}.spark{position:absolute;z-index:4;color:rgba(255,255,255,.48);font:700 10px Arial;letter-spacing:.28em}.spark-a{right:6%;top:7%}.spark-b{left:6%;bottom:7%;font-size:44px}.orange-disc{position:absolute;width:230px;height:230px;border:1px solid rgba(216,255,69,.7);right:-80px;top:25%;border-radius:50%}.scroll-note{position:absolute;left:calc(50% - 28px);bottom:0;width:56px;height:56px;background:#fff;border-radius:28px 28px 0 0;z-index:5;display:grid;place-items:center;font-size:0}.scroll-note span{font-size:20px}
+.marquee{overflow:hidden;background:var(--navy);color:#fff;padding:17px 0;white-space:nowrap}.marquee div{width:max-content;font:700 12px Arial;letter-spacing:.22em;animation:slide 22s linear infinite}@keyframes slide{to{transform:translateX(-38%)}}
+.section-pad{padding:130px 7vw}.section-label{display:flex;align-items:center;gap:13px;font:700 10px Arial;letter-spacing:.2em}.section-label b{display:grid;place-items:center;width:34px;height:34px;border:1px solid currentColor;border-radius:50%;font-size:10px}.intro{display:grid;grid-template-columns:150px 1fr 1fr;gap:5vw;border-bottom:1px solid var(--line)}.intro-main .kicker,.support-heading p,.flow-head p{font:700 11px Arial;letter-spacing:.2em;color:var(--blue)}.intro h2,.support h2,.flow h2,.faq h2{font-size:clamp(38px,4.2vw,64px);font-weight:500;letter-spacing:-.06em;line-height:1.15;margin:20px 0}.intro-copy{padding-top:45px;font-size:14px;font-weight:600;line-height:2.1}.mini-stats{display:flex;gap:1px;margin-top:38px;background:var(--line)}.mini-stats div{flex:1;background:#fff;padding:18px 10px}.mini-stats strong{display:block;font-size:29px;font-weight:500}.mini-stats strong small{font-size:11px}.mini-stats span{font-size:9px}
+.support{background:var(--ice);color:var(--ink)}.support-heading{display:grid;grid-template-columns:1fr 2fr;align-items:end;margin:45px 0 70px 150px}.support-heading h2{margin:0}.support-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--ink)}.support-grid article{min-height:390px;padding:24px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:transparent}.card-num{font:700 10px Arial;letter-spacing:.15em}.card-icon{height:125px;display:grid;place-items:center;color:var(--blue);font:400 68px Arial}.chat-icon{position:relative}.chat-icon span{position:absolute;width:74px;height:48px;border:2px solid var(--navy);border-radius:50%}.chat-icon span:last-child{transform:translate(20px,18px);background:var(--lime)}.support-grid h3{font-size:19px;margin:12px 0}.support-grid p{font-size:12px;line-height:1.9;font-weight:600;color:#49516b}
+.fit{background:var(--navy);color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:7vw}.fit-title span{font-size:10px;letter-spacing:.18em}.fit-title h2{font-size:clamp(48px,6vw,86px);font-weight:500;line-height:.95;letter-spacing:-.07em;margin:28px 0}.fit ul{list-style:none;margin:0;padding:20px 0}.fit li{padding:20px 0;border-bottom:1px solid rgba(255,255,255,.28);font-size:15px;font-weight:700}.fit li span{color:var(--lime);margin-right:18px}
+.flow{background:#fff}.flow-head{text-align:center;margin:20px 0 70px}.flow-head h2{margin:12px}.steps{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);margin:0;padding:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}.steps li{min-height:260px;padding:22px;text-align:left;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);position:relative}.steps li>b{font:700 10px Arial}.step-icon{display:block;font-size:48px;color:var(--blue);margin:42px 0 26px}.steps h3{font-size:17px;margin:0}.steps p{font-size:10px;color:#737b90}
+.faq{display:grid;grid-template-columns:150px 1fr;gap:5vw;background:var(--ice)}.faq h2{margin:0 0 38px}.faq-list{grid-column:2}details{border-top:1px solid var(--ink)}details:last-child{border-bottom:1px solid var(--ink)}summary{list-style:none;min-height:82px;display:flex;align-items:center;gap:20px;cursor:pointer;font-size:14px;font-weight:700}summary::-webkit-details-marker{display:none}summary span{font:500 20px Arial;color:var(--blue)}summary i{margin-left:auto;font-style:normal;font-size:22px}details[open] summary i{transform:rotate(45deg)}details p{margin:0;padding:0 45px 28px;font-size:13px;line-height:1.8}
+.contact{background:var(--navy);color:#fff;text-align:center;position:relative}.contact>p:first-of-type{font:700 10px Arial;letter-spacing:.24em;color:var(--lime)}.contact h2{font-size:clamp(43px,5.8vw,82px);font-weight:500;letter-spacing:-.06em;line-height:1.08;margin:25px 0 45px}.contact-button{margin:0 auto;background:#fff;color:var(--navy)}.contact-button:hover{background:var(--lime);color:var(--navy)}.contact-badge{position:absolute;left:8%;top:95px;border:1px solid var(--lime);border-radius:50%;width:120px;height:120px;display:grid;place-content:center;color:var(--lime);font-size:10px;transform:rotate(-8deg)}.privacy-note{font-size:9px;opacity:.55;margin-top:25px}footer{padding:60px 7vw 25px;background:#050b1f;color:#fff;display:grid;grid-template-columns:1fr 2fr;gap:40px}.footer-brand .brand-mark{background:#fff;color:var(--navy)}.footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:18px 30px;align-items:center;font-size:10px;font-weight:700}footer>small{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.2);padding-top:20px;text-align:right;font-size:8px;letter-spacing:.15em}
+@media(max-width:900px){.site-header{height:68px}.site-header nav,.header-cta{display:none}.hero{grid-template-columns:1fr}.hero-art{order:1;min-height:56vh}.hero-copy{order:2;padding:65px 7vw}.hero h1{font-size:clamp(58px,15vw,96px)}.scroll-note{display:none}.section-pad{padding:85px 6vw}.intro{grid-template-columns:1fr}.intro-copy{padding-top:0}.support-heading{display:block;margin:40px 0}.support-grid{grid-template-columns:1fr 1fr}.fit{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.steps li{min-height:190px}.faq{grid-template-columns:1fr}.faq-list{grid-column:1}.contact-badge{display:none}}
+@media(max-width:520px){.hero-art{min-height:480px}.portrait{transform:translateX(-50%) scale(.83);transform-origin:bottom}.support-grid{grid-template-columns:1fr}.mini-stats{flex-direction:column}.fit-title h2{font-size:50px}.faq h2,.intro h2,.support h2,.flow h2{font-size:38px}footer{grid-template-columns:1fr}.footer-links{justify-content:flex-start}footer>small{grid-column:1;text-align:left}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee div{animation:none}}
 </style>
 </head>
-<body><main><header class="site-header"><a class="brand" href="#top" aria-label="Carifer ホーム"><span class="brand-mark">C</span><span>若手向けキャリア支援<br/><b>Carifer</b></span></a><nav aria-label="メインナビゲーション"><a href="#about">私たちについて</a><a href="#support">サポート</a><a href="#flow">ご利用の流れ</a></nav><a class="header-cta" href="#contact">無料で相談する <span aria-hidden="true">↗</span></a></header><section class="hero" id="top"><div class="hero-copy"><p class="eyebrow"><span>20代〜30代前半の</span>若手向けキャリア支援サービス</p><h1><span>君ならできる。</span><span>未来を変えよう。</span></h1><p class="hero-lead">年収・成長・安定——「豊かさ」の形は、人それぞれ。<br/>あなたにとっての豊かさを、一緒に見つけよう。</p><a class="main-cta" href="https://www.trust-lead.jp/carifer" target="_blank" rel="noreferrer"><small>未経験OK・非公開求人を多数ご用意</small>無料相談に申し込む <span aria-hidden="true">↗</span></a></div><div class="hero-art" aria-label="前向きに一歩を踏み出す若者のイメージ"><span class="spark spark-a">✦</span><span class="spark spark-b">✦</span><div class="speech speech-a">未経験からの<br/>挑戦を応援!</div><div class="portrait"><div class="hair"></div><div class="face"><span class="eye left"></span><span class="eye right"></span><span class="smile"></span></div><div class="body"><span class="shirt-line"></span></div></div><div class="speech speech-b">無料研修で<br/><b>即戦力へ</b></div><div class="orange-disc"></div></div><div class="scroll-note">SCROLL <span>↓</span></div></section><section class="marquee" aria-label="サービスメッセージ"><div>YOUR CHALLENGE, OUR SUPPORT · YOUR CHALLENGE, OUR SUPPORT ·</div></section><section class="intro section-pad" id="about"><div class="section-label"><b>01</b><span>ABOUT US</span></div><div class="intro-main"><p class="kicker">変わりたい、その気持ちが<br/>未来を変える。</p><h2>あなたの可能性を開く<br/>“挑戦のきっかけ”を。</h2></div><div class="intro-copy"><p>ドライバー・製造・販売・サービス業——どんな経験からでも、あなたの次のステージにつながる仕事があります。</p><p>Cariferは、20代〜30代前半の未経験からキャリアを築きたい方を応援します。私たち自身もゼロから挑戦してきたからこそ、あなたの「変わりたい」を本気で支えます。</p><div class="mini-stats"><div><strong>20<small>代〜</small></strong><span>若手に特化</span></div><div><strong>未<small>経験</small></strong><span>歓迎求人多数</span></div><div><strong>0<small>円</small></strong><span>研修まで無料</span></div></div></div></section><section class="support section-pad" id="support"><div class="section-label light"><b>02</b><span>OUR SUPPORT</span></div><div class="support-heading"><p>Cariferが選ばれる理由</p><h2>挑戦を支える、<br/>4つのサポート。</h2></div><div class="support-grid"><article><div class="card-num">01</div><div class="card-icon chat-icon"><span></span><span></span></div><h3>本当に合う仕事だけ</h3><p>「なりたい自分」から逆算し、未経験でも挑戦できる成長ポジションや非公開求人を厳選してご紹介します。</p></article><article><div class="card-num">02</div><div class="card-icon compass-icon">✦</div><h3>マンツーマン伴走</h3><p>キャリア面談、応募書類の添削、面接対策、企業との調整まで、専任担当が完全伴走します。</p></article><article><div class="card-num">03</div><div class="card-icon flag-icon">⚑</div><h3>無料ビジネス研修</h3><p>社会人基礎力・ビジネスマナー・営業スキルなど、仕事で役立つ内容をオンラインで学べます。</p></article><article><div class="card-num">04</div><div class="card-icon flag-icon">∞</div><h3>入社後もフォロー</h3><p>定期的なキャリアミーティングで入社後の不安を解消し、その先のキャリア形成も支えます。</p></article></div></section><section class="fit section-pad"><div class="fit-title"><span>こんな方におすすめ</span><h2>THIS IS FOR YOU!</h2></div><ul><li><span aria-hidden="true">✓</span>未経験から新しい仕事に挑戦したい</li><li><span aria-hidden="true">✓</span>年収・成長・安定を見直したい</li><li><span aria-hidden="true">✓</span>自分に合う仕事だけを紹介してほしい</li><li><span aria-hidden="true">✓</span>入社後も相談できる環境がほしい</li></ul></section><section class="flow section-pad" id="flow"><div class="section-label"><b>03</b><span>HOW IT WORKS</span></div><div class="flow-head"><p>かんたん5ステップ</p><h2>相談から内定まで</h2></div><ol class="steps"><li><b>01</b><span class="step-icon">☝</span><h3>LINE登録</h3><p>最短1分で完了</p></li><li><b>02</b><span class="step-icon">☕</span><h3>キャリア面談</h3><p>オンライン・対面OK</p></li><li><b>03</b><span class="step-icon">⌕</span><h3>求人紹介・対策</h3><p>あなたに合う求人だけ</p></li><li><b>04</b><span class="step-icon">✎</span><h3>無料研修</h3><p>必要に応じて受講</p></li><li><b>05</b><span class="step-icon">♬</span><h3>入社</h3><p>その後も定期フォロー</p></li></ol></section><section class="faq section-pad"><div class="section-label"><b>04</b><span>FAQ</span></div><h2>よくある質問</h2><div class="faq-list"><details><summary><span>Q.</span>利用に費用はかかりますか？<i>＋</i></summary><p>かかりません。登録から求人紹介、面接対策、ビジネス研修まですべて無料です。</p></details><details><summary><span>Q.</span>在職中でも利用できますか？<i>＋</i></summary><p>はい。オンライン面談に対応しており、平日夜や土日のご相談も可能です。</p></details><details><summary><span>Q.</span>未経験でも仕事を紹介してもらえますか？<i>＋</i></summary><p>はい。未経験歓迎求人を多数ご用意し、基礎から学べるサポートも行っています。</p></details><details><summary><span>Q.</span>ビジネス研修では何を学べますか？<i>＋</i></summary><p>ビジネスマナー、コミュニケーション、仕事の進め方など、実務で役立つ基礎を学べます。</p></details><details><summary><span>Q.</span>希望に合わない求人を紹介されませんか？<i>＋</i></summary><p>無理な紹介は一切ありません。希望を大切にし、納得できる求人だけをご提案します。</p></details></div></section><section class="contact section-pad" id="contact"><div class="contact-badge">まずは気軽に<br/><b>話してみよう!</b></div><p>YOUR NEXT STEP</p><h2>キャリアの第一歩を、<br/>Cariferと踏み出そう。</h2><a class="contact-button" href="https://www.trust-lead.jp/carifer" target="_blank" rel="noreferrer"><small>かんたん1分・完全無料</small>無料相談に申し込む <span aria-hidden="true">↗</span></a><p class="privacy-note">無理な勧誘や、許可のない企業紹介は行いません。</p></section><footer><div class="footer-brand"><span class="brand-mark">C</span><span>若手向けキャリア支援<br/><b>Carifer</b></span></div><div class="footer-links"><a href="#about">私たちについて</a><a href="#support">サポート</a><a href="#flow">ご利用の流れ</a><a href="https://www.trust-lead.jp/" target="_blank" rel="noreferrer">株式会社TL</a><a href="https://www.trust-lead.jp/carifer" target="_blank" rel="noreferrer">公式ページ</a></div><small>© 2025 Trust Lead inc. All rights reserved</small></footer></main></body>
+<body><main><header class="site-header"><a class="brand" href="#top" aria-label="Carifer ホーム"><span class="brand-mark">C</span><span><b>Carifer</b><br/>CAREER PARTNER</span></a><nav aria-label="メインナビゲーション"><a href="#about">私たちについて</a><a href="#support">サポート</a><a href="#flow">ご利用の流れ</a></nav><a class="header-cta" href="#contact">無料で相談する <span aria-hidden="true">↗</span></a></header><section class="hero" id="top"><div class="hero-copy"><p class="eyebrow">若手向けキャリア支援サービス</p><h1><span>Your Career.</span><span>Forward.</span></h1><p class="hero-lead"><b>君ならできる。未来を変えよう。</b><br/>あなたにとっての「豊かさ」を、一緒に見つける。</p><a class="main-cta" href="https://www.trust-lead.jp/carifer" target="_blank" rel="noreferrer"><small>未経験OK・非公開求人を多数ご用意</small>無料相談に申し込む <span aria-hidden="true">↗</span></a></div><div class="hero-art" aria-label="前向きに一歩を踏み出す若者のイメージ"><span class="spark spark-a">CAREER</span><span class="spark spark-b">01</span><div class="speech speech-a">CHANGE<br/>YOUR FUTURE</div><div class="portrait"><div class="hair"></div><div class="face"><span class="eye left"></span><span class="eye right"></span><span class="smile"></span></div><div class="body"><span class="shirt-line"></span></div></div><div class="speech speech-b">20s—30s<br/><b>CAREER SUPPORT</b></div><div class="orange-disc"></div></div><div class="scroll-note">SCROLL <span>↓</span></div></section><section class="marquee" aria-label="サービスメッセージ"><div>SHIFT YOUR CAREER. ACCELERATE YOUR FUTURE. · SHIFT YOUR CAREER. ACCELERATE YOUR FUTURE. ·</div></section><section class="intro section-pad" id="about"><div class="section-label"><b>01</b><span>ABOUT US</span></div><div class="intro-main"><p class="kicker">OUR MISSION</p><h2>あなたの可能性を開く<br/>“挑戦のきっかけ”を。</h2></div><div class="intro-copy"><p>ドライバー・製造・販売・サービス業——どんな経験からでも、あなたの次のステージにつながる仕事があります。</p><p>Cariferは、20代〜30代前半の未経験からキャリアを築きたい方を応援します。私たち自身もゼロから挑戦してきたからこそ、あなたの「変わりたい」を本気で支えます。</p><div class="mini-stats"><div><strong>20<small>代〜</small></strong><span>若手に特化</span></div><div><strong>未<small>経験</small></strong><span>歓迎求人多数</span></div><div><strong>0<small>円</small></strong><span>研修まで無料</span></div></div></div></section><section class="support section-pad" id="support"><div class="section-label light"><b>02</b><span>OUR SUPPORT</span></div><div class="support-heading"><p>WHAT WE DO</p><h2>挑戦を支える、<br/>4つのサポート。</h2></div><div class="support-grid"><article><div class="card-num">01</div><div class="card-icon chat-icon"><span></span><span></span></div><h3>本当に合う仕事だけ</h3><p>「なりたい自分」から逆算し、未経験でも挑戦できる成長ポジションや非公開求人を厳選してご紹介します。</p></article><article><div class="card-num">02</div><div class="card-icon compass-icon">✦</div><h3>マンツーマン伴走</h3><p>キャリア面談、応募書類の添削、面接対策、企業との調整まで、専任担当が完全伴走します。</p></article><article><div class="card-num">03</div><div class="card-icon flag-icon">⚑</div><h3>無料ビジネス研修</h3><p>社会人基礎力・ビジネスマナー・営業スキルなど、仕事で役立つ内容をオンラインで学べます。</p></article><article><div class="card-num">04</div><div class="card-icon flag-icon">∞</div><h3>入社後もフォロー</h3><p>定期的なキャリアミーティングで入社後の不安を解消し、その先のキャリア形成も支えます。</p></article></div></section><section class="fit section-pad"><div class="fit-title"><span>WHO WE SUPPORT</span><h2>MOVE YOUR<br/>CAREER FORWARD.</h2></div><ul><li><span aria-hidden="true">✓</span>未経験から新しい仕事に挑戦したい</li><li><span aria-hidden="true">✓</span>年収・成長・安定を見直したい</li><li><span aria-hidden="true">✓</span>自分に合う仕事だけを紹介してほしい</li><li><span aria-hidden="true">✓</span>入社後も相談できる環境がほしい</li></ul></section><section class="flow section-pad" id="flow"><div class="section-label"><b>03</b><span>HOW IT WORKS</span></div><div class="flow-head"><p>5 STEPS TO START</p><h2>相談から内定まで</h2></div><ol class="steps"><li><b>01</b><span class="step-icon">☝</span><h3>LINE登録</h3><p>最短1分で完了</p></li><li><b>02</b><span class="step-icon">☕</span><h3>キャリア面談</h3><p>オンライン・対面OK</p></li><li><b>03</b><span class="step-icon">⌕</span><h3>求人紹介・対策</h3><p>あなたに合う求人だけ</p></li><li><b>04</b><span class="step-icon">✎</span><h3>無料研修</h3><p>必要に応じて受講</p></li><li><b>05</b><span class="step-icon">♬</span><h3>入社</h3><p>その後も定期フォロー</p></li></ol></section><section class="faq section-pad"><div class="section-label"><b>04</b><span>FAQ</span></div><h2>よくある質問</h2><div class="faq-list"><details><summary><span>Q.</span>利用に費用はかかりますか？<i>＋</i></summary><p>かかりません。登録から求人紹介、面接対策、ビジネス研修まですべて無料です。</p></details><details><summary><span>Q.</span>在職中でも利用できますか？<i>＋</i></summary><p>はい。オンライン面談に対応しており、平日夜や土日のご相談も可能です。</p></details><details><summary><span>Q.</span>未経験でも仕事を紹介してもらえますか？<i>＋</i></summary><p>はい。未経験歓迎求人を多数ご用意し、基礎から学べるサポートも行っています。</p></details><details><summary><span>Q.</span>ビジネス研修では何を学べますか？<i>＋</i></summary><p>ビジネスマナー、コミュニケーション、仕事の進め方など、実務で役立つ基礎を学べます。</p></details><details><summary><span>Q.</span>希望に合わない求人を紹介されませんか？<i>＋</i></summary><p>無理な紹介は一切ありません。希望を大切にし、納得できる求人だけをご提案します。</p></details></div></section><section class="contact section-pad" id="contact"><div class="contact-badge">まずは気軽に<br/><b>話してみよう!</b></div><p>YOUR NEXT STEP</p><h2>キャリアの第一歩を、<br/>Cariferと踏み出そう。</h2><a class="contact-button" href="https://www.trust-lead.jp/carifer" target="_blank" rel="noreferrer"><small>かんたん1分・完全無料</small>無料相談に申し込む <span aria-hidden="true">↗</span></a><p class="privacy-note">無理な勧誘や、許可のない企業紹介は行いません。</p></section><footer><div class="footer-brand"><span class="brand-mark">C</span><span><b>Carifer</b><br/>CAREER PARTNER</span></div><div class="footer-links"><a href="#about">私たちについて</a><a href="#support">サポート</a><a href="#flow">ご利用の流れ</a><a href="https://www.trust-lead.jp/" target="_blank" rel="noreferrer">株式会社TL</a><a href="https://www.trust-lead.jp/carifer" target="_blank" rel="noreferrer">公式ページ</a></div><small>© 2025 Trust Lead inc. All rights reserved</small></footer></main></body>
 </html>
