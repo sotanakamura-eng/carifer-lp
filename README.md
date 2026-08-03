@@ -1,52 +1,36 @@
 # Carifer LP
 
-株式会社TLの若手向けキャリア支援サービス「Carifer」のランディングページです。
+株式会社TLの若手向けキャリア支援サービス「Carifer」の公開ランディングページです。
 
 ## Claude Codeで編集する
 
 ```bash
 git clone https://github.com/sotanakamura-eng/carifer-lp.git
 cd carifer-lp
-npm install
-npm run dev
+claude
 ```
 
-ブラウザで `http://localhost:3000` を開きます。主な編集対象は次の2ファイルです。
-
-- `app/page.tsx` — ページの文章・セクション構成
-- `app/globals.css` — 色・余白・レスポンシブを含むデザイン
-
-Claude Codeには、たとえば次のように依頼できます。
+このリポジトリは、追加のインストールなしで編集できる静的サイトです。Claude Codeには次のように依頼してください。
 
 ```text
-CLAUDE.mdを確認してから、Cariferのファーストビューの文章を変更してください。
-変更後にnpm run buildで確認してください。
+CLAUDE.mdを確認してからindex.htmlを編集してください。
+既存のデザインとスマホ対応を保ち、変更後にブラウザ表示を確認してください。
 ```
 
-## 公開用ファイルを更新する
+主なファイル：
+
+- `index.html` — ページ内容とCSSを含む公開サイト本体
+- `og.png` — SNS共有用画像
+- `CLAUDE.md` — Claude Code向け編集ルール
+
+ローカル確認は、リポジトリ内で次を実行します。
 
 ```bash
-npm run build
-npm run start
+python3 -m http.server 8000
 ```
 
-別のターミナルで次を実行すると、`github-pages/` に静的版が生成されます。
+その後 `http://localhost:8000` を開きます。`main` ブランチへ変更をpushすると、GitHub Pagesが自動更新されます。
 
-```bash
-node scripts/build-github-pages.mjs
-```
+## 公開URL
 
-GitHub Pagesは `main` ブランチ直下の `index.html` を公開しています。生成した
-`github-pages/index.html` をルートの `index.html` として反映してください。
-
-## 動作環境
-
-- Node.js 22.13以上
-- npm
-
-## 確認コマンド
-
-```bash
-npm run build
-npm test
-```
+https://sotanakamura-eng.github.io/carifer-lp/
