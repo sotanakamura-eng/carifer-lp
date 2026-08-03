@@ -1,34 +1,24 @@
 # CLAUDE.md
 
-## Project overview
+## Project
 
-This repository contains the Carifer recruitment landing page for 株式会社TL.
-Keep the current editorial visual direction: white, deep navy, thin rules,
-large English headings, and a small acid-lime accent.
+Carifer recruitment landing page for 株式会社TL. The published site is a
+single static `index.html`, so it can be edited without installing dependencies.
 
-## Important files
+## Files
 
-- `app/page.tsx`: page structure and Japanese copy
-- `app/globals.css`: all page styling and responsive rules
-- `app/layout.tsx`: metadata and document layout
-- `public/og.png`: social share image
-- `scripts/build-github-pages.mjs`: static GitHub Pages exporter
-- `github-pages/index.html`: generated static page; do not hand-edit
+- `index.html`: HTML structure, Japanese copy, and all CSS
+- `og.png`: social sharing image
+- `README.md`: setup and publishing instructions
 
-## Working rules
+## Editing rules
 
-1. Preserve the Carifer and 株式会社TL service content unless the user asks to change it.
-2. Do not copy source code or copyrighted assets from reference websites.
-3. Keep mobile layouts working at widths below 900px and 520px.
-4. Keep external consultation links pointed at `https://www.trust-lead.jp/carifer`.
-5. After changes, run `npm run build`.
-6. If publishing, regenerate `github-pages/index.html` with the exporter and update the root GitHub Pages file.
-
-## Commands
-
-```bash
-npm install
-npm run dev
-npm run build
-npm test
-```
+1. Edit `index.html` directly.
+2. Preserve the editorial visual direction: white, deep navy, thin rules,
+   large English headings, and a small acid-lime accent.
+3. Preserve the Carifer and 株式会社TL service content unless asked to change it.
+4. Keep consultation links pointed at `https://www.trust-lead.jp/carifer`.
+5. Keep responsive styles working below 900px and 520px.
+6. Do not copy source code or copyrighted assets from reference websites.
+7. Preview locally after edits with `python3 -m http.server 8000`.
+8. Push to `main` to publish through GitHub Pages.
